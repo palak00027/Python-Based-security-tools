@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Scanner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<h1>Website Security Scanner</h1>
+
+<div class="container">
+    <form method="POST">
+        <label for="url">Enter URL to scan:</label>
+        <input type="text" id="url" name="url" required>
+        <button type="submit">Scan</button>
+    </form>
+
+    {% if url %}
+        <h2>Results for {{ url }}</h2>
+
+        <div class="box {{ 'success' if sql_injection_result else 'error' }}">
+            <h3>SQL Injection Test</h3>
+            <p>{{ sql_injection_result if sql_injection_result else "No SQL Injection detected" }}</p>
+        </div>
+
+        <div class="box {{ 'success' if xss_result else 'error' }}">
+            <h3>XSS Test</h3>
+            <p>{{ xss_result if xss_result else "No XSS vulnerability detected" }}</p>
+        </div>
+
+        <div class="box info">
+            <h3>Security Headers</h3>
+            <ul>
+                {% for header, value in headers.items() %}
+                    <li><strong>{{ header }}:</strong> {{ value }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="box info">
+            <h3>SSL Certificate</h3>
+            <p>{{ ssl_cert }}</p>
+        </div>
+
+        <div class="box info">
+            <h3>Open Ports</h3>
+            <p>{{ open_ports }}</p>
+        </div>
+
+        <div class="box info">
+            <h3>HTTP Status Code</h3>
+            <p>Status Code: {{ status_code }}</p>
+        </div>
+
+    {% endif %}
+</div>
+
+</body>
+</html>
