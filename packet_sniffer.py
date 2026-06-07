@@ -7,7 +7,7 @@ import time
 
 app = Flask(__name__)
 
-# Store captured packets
+# Store packets
 packets_list = []
 LOG_FILE = "network_traffic_log.csv"
 COLUMNS = ["Timestamp", "Source IP", "Destination IP", "Protocol", "Source Port", "Destination Port", "Packet Summary"]
