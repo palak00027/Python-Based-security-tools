@@ -311,7 +311,7 @@ This project demonstrates practical knowledge of:
 
 # 👩‍💻 Author
 
-**Palak Upadhyay**  **Sakshi Singh** **Rhitika vishwakarma**
+**Palak Upadhyay** ,  **Sakshi Singh**  , **Rhitika vishwakarma**
 
 🎓 B.E. Computer Science & Engineering (Cyber Security)
 
